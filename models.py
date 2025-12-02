@@ -14,3 +14,10 @@ class User(Base):
     email = Column(Text(), unique=True,  nullable=False)
     role = Column(Text(), default="staff")
     created_at = Column(DateTime, default=datetime. now)
+
+class Category(Base):
+    __tablename__ = "categories"
+    id = Column(Integer, primary_key=True, )
+    name = Column(Text, nullable=False, unique=True)
+    description = Column(Text)
+    created_at = Column(DateTime, default=datetime.now)    
