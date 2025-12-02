@@ -25,7 +25,9 @@ def get_user():
 #http://localhost:8000/User -> GET-> get a single genre
 @app.get("/User/{User_id}")
 def get_user(User_id):
-    return{}
+    #retrieve a single user using sqlalchemy
+    #User=db.query(User).filter(id==User_id).first()
+    return{"id":User_id}
 
 #http://localhost:8000/User -> PATCH-> update a single genre
 @app.patch("/User/{User_id}")
