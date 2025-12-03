@@ -1,5 +1,8 @@
 #1. import fast api
 from fastapi import FastAPI
+#this is an inbuilt package in python which allows us to define the shape of POST and PATHCH methods and aslso do validations
+from pydantic import BaseModel
+from models import get_db, User, Category, Product, Order
 
 #create and instance
 app = FastAPI()
@@ -39,10 +42,12 @@ def update_user(User_id):
 def delete_user(User_id):
     return{}
 
+class CategorySchema(BaseModel):
+    name:str
 
 #http://localhost:8000/User -> POST-> create a single genre
 @app.post("/Category")
-def create_category():
+def create_category(category:CategorySchema):
     #use sql alchemy to create records
     return {"message":"Category created succesfully"}
 
