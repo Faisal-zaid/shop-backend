@@ -1,7 +1,7 @@
 #from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 from sqlalchemy import Column, Integer,Text,DateTime, ForeignKey, create_engine
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker,Session
 
 #create an engine which is responsible for converting sql to python and vice versa
 engine=create_engine("sqlite:///shop.db", echo=True)
