@@ -18,6 +18,11 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"])
 def read_root():
     return {"Hello": "World"}
 
+class UserSchema(BaseModel):
+    name: str
+    email: str
+    role: str | None = "Employee"
+
 #http://localhost:8000/User -> POST-> create a single genre
 @app.post("/User")
 def create_user():
@@ -49,6 +54,7 @@ def delete_user(User_id):
 
 class CategorySchema(BaseModel):
     name:str
+    description: str | None=None
 
 #http://localhost:8000/User -> POST-> create a single genre
 @app.post("/Category")
@@ -94,6 +100,15 @@ def update_category(Category_id):
 def delete_category(Category_id):
     return{}
 
+
+class ProductSchema(BaseModel):
+    name: str
+    price: int
+    stock: int
+    category_id: int
+    user_id: int
+
+
 #http://localhost:8000/User -> POST-> create a single genre
 @app.post("/Product")
 def create_product():
@@ -122,6 +137,11 @@ def update_product(Product_id):
 @app.delete("/Product/{Product_id}")
 def delete_product(Product_id):
     return{}
+
+class OrderSchema(BaseModel):
+    product_id: int
+    user_id: int
+    quantity: int
 
 #http://localhost:8000/User -> POST-> create a single genre
 @app.post("/Order")
