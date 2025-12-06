@@ -1,11 +1,16 @@
 #1. import fast api
 from fastapi import FastAPI, Depends
 #this is an inbuilt package in python which allows us to define the shape of POST and PATHCH methods and aslso do validations
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from models import get_db, User, Category, Product, Order
 
 #create and instance
 app = FastAPI()
+
+
+#allow network request from all servers
+app.add_middleware(CORSMiddleware, allow_origins=["*"])
 
 
 #create routes and instances
